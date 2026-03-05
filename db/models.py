@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, ForeignKey
 from sqlalchemy.orm import DeclarativeBase
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 class Base(DeclarativeBase):
@@ -16,19 +16,19 @@ class Campaign(Base):
     rubros = Column(String)  # JSON string list
     cantidad_diaria = Column(Integer, default=50)
     activa = Column(Boolean, default=True)
-    creada_en = Column(DateTime, default=datetime.utcnow)
+    creada_en = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 
 class Business(Base):
     __tablename__ = "businesses"
 
     id = Column(Integer, primary_key=True)
-    campana_id = Column(Integer, ForeignKey("campaigns.id"), nullable=True)
+    campana_id = Column(Integer, ForeignKey("campaigns.id"), nullable=True, index=True)
 
     # Datos scrapeados
     nombre = Column(String, nullable=False)
     categoria = Column(String)
-    ciudad = Column(String)
+    ciudad = Column(String, index=True)
     telefono = Column(String)
     email = Column(String)
     whatsapp = Column(String)
@@ -45,7 +45,7 @@ class Business(Base):
     url_preview = Column(String)
 
     # Pipeline state
-    estado = Column(String, default="scraped")
+    estado = Column(String, default="scraped", index=True)
     # Estados: scraped, audited, skipped, generated, deployed,
     #          outreach_email, outreach_whatsapp, follow_up,
     #          responded, converted, lost
@@ -56,6 +56,6 @@ class Business(Base):
     respondio = Column(Boolean, default=False)
     convertido = Column(Boolean, default=False)
 
-    fecha_scraping = Column(DateTime, default=datetime.utcnow)
+    fecha_scraping = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     fecha_ultimo_contacto = Column(DateTime)
     notas = Column(Text)
