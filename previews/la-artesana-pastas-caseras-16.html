@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Artesana - Pastas Caseras | Mar del Plata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background-color: #fafaf8;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .phone-header {
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .phone-header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .phone-header a:hover {
+            opacity: 0.8;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #D4A574 0%, #8B4513 100%);
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .slogan {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #8B4513;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Lora', serif;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* SECTION STYLES */
+        section {
+            padding: 4rem 0;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #8B4513;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #D4A574, #8B4513);
+            border-radius: 2px;
+        }
+
+        /* SERVICIOS */
+        #servicios {
+            background-color: #fff;
+        }
+
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .servicio-card {
+            background: #fafaf8;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+            border-top: 4px solid #D4A574;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #8B4513;
+        }
+
+        .servicio-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .servicio-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #8B4513;
+        }
+
+        .servicio-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* POR QUE ELEGIRNOS */
+        #por-que {
+            background: linear-gradient(135deg, #f5f5f0 0%, #fff 100%);
+        }
+
+        .razones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .razon-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #D4A574;
+        }
+
+        .razon-item h3 {
+            font-size: 1.4rem;
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+
+        .razon-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CONTACTO */
+        #contacto {
+            background-color: #fff;
+        }
+
+        .contacto-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contacto-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contacto-info h3 {
+            font-size: 1.3rem;
+            color: #8B4513;
+            margin-bottom: 1.5rem;
+        }
+
+        .contacto-info-item {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contacto-info-item .icon {
+            font-size: 1.8rem;
+            color: #D4A574;
+            width: 40px;
+            text-align: center;
+        }
+
+        .contacto-info-item p {
+            color: #555;
+        }
+
+        .contacto-info-item a {
+            color: #8B4513;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contacto-info-item a:hover {
+            text-decoration: underline;
+        }
+
+        .formulario {
+            background: #fafaf8;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #8B4513;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #D4A574;
+            border-radius: 5px;
+            font-family: 'Lora', serif;
+            font-size: 0.95rem;
+            color: #2c2c2c;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B4513;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            background-color: #8B4513;
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Lora', serif;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .form-button:hover {
+            background-color: #A0522D;
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-content strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .slogan {
+                font-size: 1.1rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .contacto-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .servicios-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .razones-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .phone-header {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero .slogan {
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            section {
+                padding: 2rem 0;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🍝 La Artesana</div>
+            <div class="phone-header">
+                <span>📞</span>
+                <a href="tel:02234711330">02234711330</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>La Artesana Pastas Caseras</h1>
+        <p class="slogan">Hecha con amor, en cada bocado</p>
+        <a href="#contacto" class="cta-button">Hacé tu pedido ahora</a>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <div class="servicio-icon">🍝</div>
+                    <h3>Pastas Frescas Caseras</h3>
+                    <p>Fideos, ñoquis y ravioles elaborados cada día con ingredientes frescos y de primera calidad. Sin conservantes ni colorantes.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">📦</div>
+                    <h3>Pedidos Por Encargo</h3>
+                    <p>Personalizamos tus pedidos según tus preferencias. Rellenos especiales, tipos de masa y tamaños a medida para eventos y cenas.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🚚</div>
+                    <h3>Entrega a Domicilio</h3>
+                    <p>Llevamos tus pastas preferidas directamente a tu casa en Mar del Plata. Rápido, seguro y en perfecto estado para que disfrutes.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">👨‍🍳</div>
+                    <h3>Asesoramiento Gastronómico</h3>
+                    <p>Te asesoramos sobre las mejores combinaciones, salsas ideales para cada pasta y sugerencias de presentación para tus comidas.</p>
+                </div>
+                <div class="servicio-card">
+                    <div class="servicio-icon">🎉</div>
+                    <h3>Catering Para Eventos</h3>
+                    <p>Servimos pastas caseras frescas para bodas, cumpleaños, empresas y eventos especiales. Consulta nuestras opciones y promociones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUE ELEGIRNOS -->
+    <section id="por-que">
+        <div class="container">
+            <h2>¿Por qué elegirnos?</h2>
+            <div class="razones-grid">
+                <div class="razon-item">
+                    <h3>✨ Recetas Auténticas</h3>
+                    <p>Heredamos las recetas de nuest
