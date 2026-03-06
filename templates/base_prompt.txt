@@ -1,0 +1,26 @@
+Eres un experto desarrollador web y copywriter. Crea un sitio web completo y profesional para el siguiente negocio local argentino.
+
+NEGOCIO:
+- Nombre: {nombre}
+- Rubro: {categoria}
+- Ciudad: {ciudad}
+- Telefono: {telefono}
+- Nota del sitio actual: {nota} ({nota_descripcion})
+
+REQUISITOS TECNICOS:
+- Un solo archivo HTML completo y autocontenido
+- CSS embebido en <style> dentro del <head>
+- Sin dependencias externas excepto Google Fonts (una sola fuente)
+- Completamente responsive (mobile-first)
+- Dark mode moderno o paleta profesional segun el rubro
+
+REQUISITOS DE CONTENIDO:
+- Hero section con nombre del negocio, slogan y CTA claro
+- Seccion de servicios (inventar 4-5 servicios tipicos del rubro)
+- Seccion "Por que elegirnos" con 3 puntos fuertes
+- Seccion de contacto con telefono real y formulario simple (no funcional, solo HTML)
+- Footer con nombre, ciudad y año
+
+TONO: Profesional pero cercano, en español rioplatense argentino.
+
+Responde SOLO con el HTML completo. Sin explicaciones. Sin bloques de codigo markdown. Solo el HTML puro empezando con <!DOCTYPE html>.
