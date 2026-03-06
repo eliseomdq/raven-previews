@@ -101,14 +101,10 @@ def audit_business(business_id: int):
         nota, razon = audit_with_claude(b.nombre, b.categoria, b.url_sitio_actual)
         b.nota_auditoria = nota
         b.notas = razon
-        b.estado = "audited"
+        b.estado = "skipped" if nota in ("B", "A") else "audited"
         session.commit()
 
-        # Solo contactar si nota es C, D o F
         if nota in ("C", "D", "F"):
             generate_website.delay(business_id)
             return {"id": business_id, "nota": nota, "accion": "generando sitio"}
-        else:
-            b.estado = "skipped"
-            session.commit()
-            return {"id": business_id, "nota": nota, "accion": "skipped"}
+        return {"id": business_id, "nota": nota, "accion": "skipped"}
